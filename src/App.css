@@ -1,38 +1,243 @@
-.App {
+* {
+  outline: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: small;
+}
+
+.Container {
+  height: 100%;
+  z-index: 0;
+}
+
+.Header {
+  border: 1px solid rgb(32, 32, 32);
   text-align: center;
+  padding: 15px;
+  width: 100%;
+  height: 10%;
+  background-color: rgb(25, 25, 25);
+  font-size: 23px;
+  color: aliceblue;
+  font-weight: bolder;
+  letter-spacing: 5px;
 }
 
-.App-logo {
-  height: 40vmin;
+.SubHeader {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: end;
+  background-color: rgb(56, 56, 56);
+  border-bottom: 1px solid rgb(65, 65, 65);
+  padding: 1%;
+  gap: 1vw;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownContent {
+  display: flex;
+  position: absolute;
   pointer-events: none;
+  opacity: 0;
+  background-color: rgb(56, 56, 56);
+  min-width: 1rem;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(32, 32, 3, 0.5);
+  z-index: 1;
+  transition: 0.3s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.dropdownContent a {
+  padding: 12px 16px;
+  margin: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: block;
+  transition: 0.3s;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.dropdownContent a:hover {
+  background-color: rgb(76, 76, 76);
+  transition: 0.2s;
+}
+
+.dropdown:hover .dropdownContent {
+  opacity: 1;
+  pointer-events: all;
+  transition: 0.3s;
+}
+
+.HyperText {
+  font-size: larger;
+  font-weight: bold;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  word-spacing: 5px;
+  cursor: pointer;
+  color: rgb(172, 172, 172);
+  margin: 5px;
+  text-shadow: 1px 0px rgba(0, 0, 0, 1);
+  user-select: none;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+}
+
+.HyperTextnoHover {
+  font-size: larger;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  word-spacing: 5px;
+  color: rgb(177, 177, 177);
+  margin: 5px;
+  text-shadow: 1px 0px rgba(0, 0, 0, 0.7);
+  user-select: none;
+}
+
+.HyperText:hover {
+  color: rgb(231, 231, 231);
+  transition: 0.15s;
+}
+
+.Footer {
+  text-align: center;
+  border: 1px solid rgb(32, 32, 32);
+  padding: 15px;
+  width: 100%;
+  height: 5%;
+  background-color: rgb(25, 25, 25);
+  bottom: 0;
+}
+
+.ThreadContainer {
+  padding: 10px;
+  overflow: hidden;
+  background-color: rgb(32, 30, 30);
+  margin: 20px 0px 10px 0px;
+  box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.6) inset;
+}
+
+.masongrid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 2em;
+  width: auto;
+}
+.masongridcolumn {
+  padding-left: 2rem;
+  background-clip: padding-box;
+}
+
+@keyframes slidein {
+  0% {
+    transform: translateX(110vw);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+.ThreadContainer {
+  animation: slidein 0.3s;
+}
+
+.ThreadReply {
+  animation: slidein 0.2s;
+}
+
+.ThreadTitle {
+  color: rgb(173, 175, 175);
+  font-size: large;
+  font-weight: bolder;
+  background-color: rgb(59, 58, 58);
+  padding: 1rem;
+  border: 1px solid rgb(32, 32, 32);
+  display: inline-block;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.4) inset;
+}
+
+.ThreadImg {
+  float: left;
+  margin: 10px;
+  border: 1px solid rgb(32, 32, 32);
+  padding: 5px;
+  background-color: rgb(59, 58, 58);
+}
+
+.ThreadText {
   color: white;
+  font-size: large;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 3px;
 }
 
-.App-link {
-  color: #61dafb;
+.ThreadReply {
+  color: white;
+  font-size: large;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 3px;
+  background-color: rgb(59, 58, 58);
+  border: 1px solid rgb(22, 22, 22);
+  max-width: 90vw;
+  list-style-type: none;
+  overflow-wrap: break-word;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.ThreadTypeWindow {
+  padding: 10px 20px 20px 20px;
+  border: 1px solid rgb(32, 32, 32);
+  z-index: 2;
+  background-color: rgba(46, 46, 46, 1);
+  top: 0;
+  right: 0;
+  margin: 10.3rem 2.3rem 2.3rem 2.3rem;
+  box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.4);
+}
+
+.ThreadInputArea {
+  border: 1px solid rgb(32, 32, 32);
+  height: 10rem;
+  width: 30rem;
+  resize: none;
+  background-color: rgb(66, 64, 64);
+  color: white;
+  font-size: medium;
+}
+
+.ThreadTitleInputArea {
+  border: 1px solid rgb(32, 32, 32);
+  resize: none;
+  font-size: large;
+  background-color: rgb(66, 64, 64);
+  color: rgb(255, 255, 255);
+}
+
+.ThreadModalTopBar {
+  background-color: rgb(25, 25, 25);
+  display: flex;
+  justify-content: flex-end;
+  margin: -10px -20px 0px -20px;
+  cursor: grab;
+}
+
+.ThreadInputArea:focus {
+  background-color: rgb(87, 78, 78);
+  transition: 0.2s;
+}
+
+.ThreadTitleInputArea:focus {
+  background-color: rgb(87, 78, 78);
+  transition: 0.2s;
+}
+
+.BkTabContainer,
+.ChatTabContainer {
+  padding: 20px;
 }
