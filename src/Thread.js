@@ -3,7 +3,7 @@ import { Threads } from "./Threads";
 import { Bookmarks } from "./Bookmarks";
 import PostReplyPopUp from "./PostReplyPopUp";
 import ReplyingHoverPopUp from "./ReplyingHoverPopUp";
-import { AiOutlineStar, AiFillStar } from "react-icons/ai";
+import { AiOutlineStar, AiFillStar, AiFillPushpin } from "react-icons/ai";
 
 //1) Implement replying to replies and also implement user ID's
 //2) Implement to be able to make a thread that has a poll in it
@@ -51,6 +51,9 @@ function Thread(props) {
     SetClickedReplytoReply(false);
     SetReplyTextareaInput("");
   }
+
+  const sampleThreadImage =
+    "https://ionicframework.com/docs/icons/logo-react-icon.png";
 
   const renderReplies = Threads[props.itemkey].ThreadReplies.map((reply) => (
     <li
@@ -256,10 +259,20 @@ function Thread(props) {
           console.log(props.bkcopy);
         }}
       >
-        {bked ? (
-          <AiFillStar size={25} className="HyperText" />
+        {" "}
+        {props.ID == 1 ? (
+          <AiFillPushpin size={35} className="HyperText" />
         ) : (
-          <AiOutlineStar size={25} className="HyperText" />
+          <></>
+        )}
+        {bked ? (
+          <>
+            <AiFillStar size={25} className="HyperText" />
+          </>
+        ) : (
+          <>
+            <AiOutlineStar size={25} className="HyperText" />
+          </>
         )}
       </div>
       <div
@@ -300,9 +313,9 @@ function Thread(props) {
       >
         Thread ID: {props.ID}
         <br />
-        Poster ID: {}
       </h3>
       <p className="ThreadTitle">{props.threadTitle}</p>
+      <br />
       <div
         style={{
           display: clickedRevealThread ? "none" : "block",
@@ -313,22 +326,78 @@ function Thread(props) {
             display: props.clickedHideThreads ? "none" : "block",
           }}
         >
-          {props.threadImage != undefined && (
-            <>
-              <a className="HyperTextnoHover">{props.threadImage[1]}</a>
-              <img
-                style={{ cursor: "pointer" }}
-                src={props.threadImage[0]}
-                width={clickedThreadImage ? "400" : "200"}
-                height={clickedThreadImage ? "400" : "200"}
-                className="ThreadImg"
-                onClick={handleClickThreadImage}
-              />
-            </>
-          )}
+          {props.threadImage != undefined &&
+            (props.ID != 1 ? (
+              <>
+                <a className="HyperTextnoHover">{props.threadImage[1]}</a>
+                <img
+                  style={{ cursor: "pointer" }}
+                  src={props.threadImage[0]}
+                  width={clickedThreadImage ? "400" : "200"}
+                  height={clickedThreadImage ? "400" : "200"}
+                  className="ThreadImg"
+                  onClick={handleClickThreadImage}
+                />
+              </>
+            ) : (
+              <>
+                <a className="HyperTextnoHover">React.png</a>
+                <img
+                  style={{ cursor: "pointer" }}
+                  src={sampleThreadImage}
+                  width={clickedThreadImage ? "400" : "200"}
+                  height={clickedThreadImage ? "400" : "200"}
+                  className="ThreadImg"
+                  onClick={handleClickThreadImage}
+                />
+              </>
+            ))}
           <p className="ThreadText" style={{ wordWrap: "break-word" }}>
-            {props.threadTextValue}
+            {props.ID != 1 ? (
+              props.threadTextValue
+            ) : (
+              <div style={{ fontSize: "large" }}>
+                <br />
+                Welcome to 765 forums. This is an incomplete image board (a type
+                of forum) site. It is 60% done on the Front-End and 0% done on
+                the Back-End. This is a sample thread that serves as a tutorial.
+                <br />
+                1) You can create a new thread by clicking on [Create Thread],
+                add a thread title and the content of the thread, you can also
+                optionally add an image along with the thread. Create as many
+                threads as you want
+                <br />
+                2) Threads can be about any topic, if another user wants to
+                reply and discuss about the topic of the thread, they can post a
+                reply by clicking on [Post Reply To Thread]
+                <br />
+                3) You can also reply to replies in threads, if a reply is
+                replied to, you can see that reply by hovering on the reply ID
+                that just popped up, and go to that reply by clicking its ID{" "}
+                <br />
+                4) You can change the layout of the page to display threads in a
+                masonry layout, create 5 or 6 threads and try changing the
+                layout by selecting an option from [Change Layout]
+                <br />
+                <br />
+                TODO:
+                <br />
+                1) threads will be able to be bookmarked
+                <br />
+                2) users will be able to chat privately with other users
+                <br />
+                3) there will be multiple pages of threads running at once
+                <br />
+                4) the forum will be updated in real time when a user posts
+                something
+                <br />
+                5) you will be able to make a thread into a poll
+                <br />
+              </div>
+            )}
           </p>
+
+          <br />
           <div style={{ clear: "both" }}></div>
           <a
             className="HyperText"
