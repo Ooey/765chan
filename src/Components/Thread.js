@@ -352,7 +352,7 @@ function Thread(props) {
                 />
               </>
             ))}
-          <p className="ThreadText" style={{ wordWrap: "break-word" }}>
+          <div className="ThreadText" style={{ wordWrap: "break-word" }}>
             {props.ID != 1 ? (
               props.threadTextValue
             ) : (
@@ -395,7 +395,7 @@ function Thread(props) {
                 <br />
               </div>
             )}
-          </p>
+          </div>
 
           <br />
           <div style={{ clear: "both" }}></div>

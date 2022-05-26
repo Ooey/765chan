@@ -209,6 +209,7 @@
   background-color: rgb(66, 64, 64);
   color: white;
   font-size: medium;
+  transition: 0.2s;
 }
 
 .ThreadTitleInputArea {
@@ -217,6 +218,7 @@
   font-size: large;
   background-color: rgb(66, 64, 64);
   color: rgb(255, 255, 255);
+  transition: 0.2s;
 }
 
 .ThreadModalTopBar {
@@ -240,4 +242,12 @@
 .BkTabContainer,
 .ChatTabContainer {
   padding: 20px;
+}
+
+.FileInputPrompt {
+  text-align: center;
+  border: solid 3px rgb(37, 38, 23);
+  background-color: rgb(66, 64, 64);
+  border-radius: 5px;
+  padding: 15px;
 }

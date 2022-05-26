@@ -12,11 +12,14 @@ function CreateThreadPopUp({
   handleTextareaChange,
   handleSubmitThread,
   SetThreadImage,
+  highlightEmptyField,
+  SetHighlightEmptyField,
 }) {
   function closeCreateThread() {
     SetClickedCreateThread(false);
     SetTitleTextareaInput("");
     SetTextareaInput("");
+    SetHighlightEmptyField(false);
   }
 
   return (
@@ -33,6 +36,11 @@ function CreateThreadPopUp({
               Thread Title:
             </a>
             <textarea
+              style={{
+                backgroundColor: highlightEmptyField
+                  ? "rgba(66, 25, 25,0.5)"
+                  : "rgb(66, 64, 64)",
+              }}
               className="ThreadTitleInputArea"
               value={titleTextareaInput}
               onChange={handleTitleTextareaChange}
@@ -41,6 +49,11 @@ function CreateThreadPopUp({
               Thread Content:
             </a>
             <textarea
+              style={{
+                backgroundColor: highlightEmptyField
+                  ? "rgba(66, 25, 25,0.5)"
+                  : "rgb(66, 64, 64)",
+              }}
               className="ThreadInputArea"
               value={textareaInput}
               onChange={handleTextareaChange}
@@ -53,20 +66,27 @@ function CreateThreadPopUp({
                 Thread Image:
               </a>
               <br />
-              <input
-                type="file"
-                onChange={(event) => {
-                  const [file] = event.target.files;
-                  const fileList = event.target.files;
-                  console.log(fileList);
-                  SetThreadImage([
-                    URL.createObjectURL(file),
-                    file.name,
-                    fileList[0].width,
-                    fileList[0].height,
-                  ]);
-                }}
-              />
+              <br />
+              <div style={{}}>
+                <label className="FileInputPrompt HyperText">
+                  Select Image
+                  <input
+                    style={{ display: "none" }}
+                    type="file"
+                    onChange={(event) => {
+                      const [file] = event.target.files;
+                      const fileList = event.target.files;
+                      console.log(fileList);
+                      SetThreadImage([
+                        URL.createObjectURL(file),
+                        file.name,
+                        fileList[0].width,
+                        fileList[0].height,
+                      ]);
+                    }}
+                  />
+                </label>
+              </div>
             </div>
             <h2
               className="HyperText"

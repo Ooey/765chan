@@ -26,6 +26,8 @@ export default function SubHeader({
   clickedBks,
   bkcopy,
   SetbkCopy,
+  highlightEmptyField,
+  SetHighlightEmptyField,
 }) {
   return (
     <div className="SubHeader">
@@ -40,6 +42,8 @@ export default function SubHeader({
         handleTextareaChange={handleTextareaChange}
         handleSubmitThread={handleSubmitThread}
         SetThreadImage={SetThreadImage}
+        highlightEmptyField={highlightEmptyField}
+        SetHighlightEmptyField={SetHighlightEmptyField}
       />
 
       <a

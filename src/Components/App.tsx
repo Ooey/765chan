@@ -24,6 +24,7 @@ function App() {
   const [threadImage, SetThreadImage] = useState();
   const [clickedBks, SetClickedBks] = useState(false);
   const [bkcopy, SetbkCopy] = useState(Bks);
+  const [highlightEmptyField, SetHighlightEmptyField] = useState(false);
 
   const uuid = require("react-uuid");
 
@@ -35,7 +36,7 @@ function App() {
 
   function handleSubmitThread() {
     if (textareaInput === "" || titleTextareaInput === "") {
-      console.log("empty");
+      SetHighlightEmptyField(true);
     } else {
       Threads.push({
         threadTextValue: textareaInput,
@@ -62,7 +63,7 @@ function App() {
       SetClickedCreateThread(false);
       SetTextareaInput("");
       SetTitleTextareaInput("");
-      console.log(Threads);
+      SetHighlightEmptyField(false);
     }
   }
 
@@ -102,6 +103,8 @@ function App() {
         SetClickedBks={SetClickedBks}
         bkcopy={bkcopy}
         SetbkCopy={SetbkCopy}
+        highlightEmptyField={highlightEmptyField}
+        SetHighlightEmptyField={SetHighlightEmptyField}
       />
       <Masonry
         breakpointCols={threadLayout}
